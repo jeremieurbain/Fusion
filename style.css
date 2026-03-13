@@ -1,152 +1,125 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Futura, "Futura PT", "Helvetica Neue", Arial, sans-serif;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Futura, "Futura PT", "Helvetica Neue", Arial, sans-serif;
+    }
 
-html {
-    scroll-behavior: smooth;
-    cursor: none; /* Hide default cursor */
-}
+    html {
+        scroll-behavior: smooth;
+        cursor: none; /* Keeps the system mouse hidden */
+    }
 
-body {
-    background: white;
-    color: black;
-    overflow-x: hidden;
-    cursor: none;
-}
+    body {
+        background: black; /* White on Black theme */
+        color: white;
+        overflow-x: hidden;
+    }
 
-/* Custom Arrow Cursor */
-#custom-cursor {
-    position: fixed;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 18px solid black;
-    transform: rotate(-30deg);
-    pointer-events: none;
-    z-index: 9999;
-}
+    /* Custom Arrow Cursor (Updated to White) */
+    #custom-cursor {
+        position: fixed;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 18px solid white;
+        transform: rotate(-30deg);
+        pointer-events: none;
+        z-index: 9999;
+    }
 
-.nav {
-    position: fixed;
-    width: 100%;
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-}
+    .nav {
+        position: fixed;
+        width: 100%;
+        padding: 40px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+        background: black; /* Ensures nav stays visible over content */
+    }
 
-.logo {
-    font-size: 120px;
-    letter-spacing: 20px;
-    font-weight: 600;
-}
+    .logo {
+        font-size: 120px;
+        letter-spacing: 20px;
+        font-weight: 600;
+        color: white;
+    }
 
-.contact-link {
-    text-decoration: none;
-    color: inherit;
-    font-size: 20px;
-    letter-spacing: 3px;
-    transition: opacity 0.3s;
-}
+    .contact-link {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        letter-spacing: 3px;
+        transition: opacity 0.3s;
+        opacity: 0.8;
+    }
 
-.contact-link:hover { opacity: 0.5; }
+    .contact-link:hover { opacity: 1; }
 
-.main {
-    padding: 220px 60px;
-    width: 50%;
-}
+    /* The Main Container - Increased Gap (350px) */
+    .main {
+        padding: 350px 60px 100px; 
+        width: 60%;
+    }
 
-.film-link {
-    text-decoration: none;
-    color: inherit;
-}
+    .film-link {
+        text-decoration: none;
+        color: inherit;
+    }
 
-.film {
-    font-size: 32px;
-    padding: 20px 0;
-    transition: .25s;
-}
+    /* Titles: 2x Bigger + Glow Effect */
+    .film {
+        font-size: 64px; 
+        padding: 30px 0;
+        transition: .4s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 
-.film:hover {
-    color: #ff2bd6;
-}
+    .film:hover {
+        color: white;
+        /* The Glow Effect */
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                     0 0 30px rgba(255, 255, 255, 0.4);
+        transform: translateX(15px); /* Smooth slide-in effect */
+    }
 
-.year {
-    font-size: 14px;
-    margin-left: 10px;
-    opacity: .5;
-}
+    .year {
+        font-size: 16px;
+        margin-left: 15px;
+        opacity: .4;
+        font-weight: normal;
+    }
 
-.preview {
-    position: fixed;
-    width: 520px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .15s ease-out;
-    z-index: 100;
-}
+    .preview {
+        position: fixed;
+        width: 520px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .15s ease-out;
+        z-index: 100;
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle edge */
+    }
 
-.preview img {
-    width: 100%;
-    display: block;
-}
+    .preview img {
+        width: 100%;
+        display: block;
+    }
 
-.footer {
-    padding: 200px 60px 100px;
-    font-size: 14px;
-    letter-spacing: 3px;
-    opacity: .6;
-}
+    .footer {
+        padding: 200px 60px 100px;
+        font-size: 14px;
+        letter-spacing: 3px;
+        opacity: .6;
+    }
 
-@media(max-width:900px) {
-    .logo { font-size: 60px; }
-    .main { width: 100%; padding: 160px 30px; }
-    .preview { display: none; }
-    html, body { cursor: auto; }
-    #custom-cursor { display: none; }
-}
-body {
-    background: black; /* Dark background */
-    color: white;     /* White text */
-    cursor: none;
-    overflow-x: hidden;
-}
-
-/* 1. Bigger Gap between FUSION and Titles */
-.main {
-    padding: 350px 60px; /* Increased from 220px to 350px */
-    width: 50%;
-}
-
-/* 2. Titles: 2x Bigger + Glowing */
-.film {
-    font-size: 64px; /* Doubled from 32px */
-    padding: 30px 0;
-    transition: .4s ease;
-    text-transform: uppercase; /* Makes it feel more like NEON/A24 */
-    letter-spacing: 2px;
-}
-
-/* 3. The Glow Effect on Hover */
-.film:hover {
-    color: white;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
-                 0 0 30px rgba(255, 255, 255, 0.4);
-    transform: translateX(10px); /* Slight shift for extra polish */
-}
-
-/* Update the Arrow Cursor to white so it shows up on black */
-#custom-cursor {
-    border-bottom: 18px solid white;
-}
-
-/* Update the preview container to handle the dark theme */
-.preview {
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for the image */
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
+    /* Responsive fix for Mobile */
+    @media(max-width:900px) {
+        .logo { font-size: 40px; letter-spacing: 10px; }
+        .main { width: 100%; padding: 200px 30px; }
+        .film { font-size: 32px; }
+        .preview, #custom-cursor { display: none; }
+        html, body { cursor: auto; }
+    }
