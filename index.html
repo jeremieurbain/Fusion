@@ -4,7 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSION | Production Co.</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ALL STYLES GO HERE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Futura, "Futura PT", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            cursor: none; 
+        }
+
+        body {
+            background: black; 
+            color: white;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        #custom-cursor {
+            position: fixed;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 18px solid white;
+            transform: rotate(-30deg);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 120px;
+            letter-spacing: 20px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            letter-spacing: 3px;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        .contact-link:hover { opacity: 1; }
+
+        .main {
+            padding: 350px 60px 100px; 
+            width: 60%;
+        }
+
+        .film-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .film {
+            font-size: 64px; 
+            padding: 30px 0;
+            transition: .4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .film:hover {
+            color: white;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                         0 0 30px rgba(255, 255, 255, 0.4);
+            transform: translateX(15px);
+        }
+
+        .year {
+            font-size: 16px;
+            margin-left: 15px;
+            opacity: .4;
+        }
+
+        .preview {
+            position: fixed;
+            width: 520px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .15s ease-out;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .preview img {
+            width: 100%;
+            display: block;
+        }
+
+        .footer {
+            padding: 300px 60px 100px;
+            font-size: 14px;
+            letter-spacing: 3px;
+            opacity: .6;
+        }
+
+        @media(max-width:900px) {
+            .logo { font-size: 40px; letter-spacing: 10px; }
+            .main { width: 100%; padding: 200px 30px; }
+            .film { font-size: 32px; }
+            .preview, #custom-cursor { display: none; }
+            html, body { cursor: auto; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,7 +136,7 @@
         <a href="#footer-contact" class="contact-link">CONTACT</a>
     </div>
 
-    <main class="main">
+    <div class="main">
         <a href="https://www.youtube.com/watch?v=cB0-g6u-kO4" target="_blank" class="film-link">
             <div class="film" data-img="images/RaymondLeigh.png">
                 Raymond Leigh <span class="year">2026</span>
@@ -33,16 +154,40 @@
                 MUTEK <span class="year">2024</span>
             </div>
         </a>
-    </main>
-
-    <div class="preview" id="preview">
-        <img src="" alt="Project Preview">
     </div>
 
-    <footer class="footer" id="footer-contact">
-        <p>filmbyfusion@gmail.com</p>
-    </footer>
+    <div class="preview" id="preview">
+        <img src="">
+    </div>
 
-    <script src="script.js"></script>
+    <div class="footer" id="footer-contact">
+        filmbyfusion@gmail.com
+    </div>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        const preview = document.getElementById('preview');
+        const previewImg = preview.querySelector('img');
+        const films = document.querySelectorAll('.film');
+
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // This ensures the preview is centered to the cursor
+            preview.style.left = (e.clientX + 40) + 'px';
+            preview.style.top = (e.clientY - (preview.offsetHeight / 2)) + 'px';
+        });
+
+        films.forEach(film => {
+            film.addEventListener('mouseenter', () => {
+                preview.style.opacity = 1;
+                previewImg.src = film.dataset.img;
+            });
+            film.addEventListener('mouseleave', () => {
+                preview.style.opacity = 0;
+            });
+        });
+    </script>
 </body>
 </html>
