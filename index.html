@@ -1,0 +1,185 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww26240\viewh13880\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>FUSION</title>\
+    <style>\
+        /* CSS STYLES */\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+            font-family: Futura, "Futura PT", "Helvetica Neue", Arial, sans-serif;\
+        \}\
+\
+        html \{\
+            scroll-behavior: smooth;\
+            cursor: none; \
+        \}\
+\
+        body \{\
+            background: white;\
+            color: black;\
+            overflow-x: hidden;\
+            cursor: none;\
+        \}\
+\
+        #custom-cursor \{\
+            position: fixed;\
+            width: 0;\
+            height: 0;\
+            border-left: 8px solid transparent;\
+            border-right: 8px solid transparent;\
+            border-bottom: 18px solid black;\
+            transform: rotate(-30deg);\
+            pointer-events: none;\
+            z-index: 9999;\
+        \}\
+\
+        .nav \{\
+            position: fixed;\
+            width: 100%;\
+            padding: 40px 60px;\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            z-index: 10;\
+        \}\
+\
+        .logo \{\
+            font-size: 120px;\
+            letter-spacing: 20px;\
+            font-weight: 600;\
+        \}\
+\
+        .contact-link \{\
+            text-decoration: none;\
+            color: inherit;\
+            font-size: 20px;\
+            letter-spacing: 3px;\
+            transition: opacity 0.3s;\
+        \}\
+\
+        .contact-link:hover \{ opacity: 0.5; \}\
+\
+        .main \{\
+            padding: 220px 60px;\
+            width: 50%;\
+        \}\
+\
+        .film-link \{\
+            text-decoration: none;\
+            color: inherit;\
+        \}\
+\
+        .film \{\
+            font-size: 32px;\
+            padding: 20px 0;\
+            transition: .25s;\
+        \}\
+\
+        .film:hover \{ color: #ff2bd6; \}\
+\
+        .year \{\
+            font-size: 14px;\
+            margin-left: 10px;\
+            opacity: .5;\
+        \}\
+\
+        .preview \{\
+            position: fixed;\
+            width: 520px;\
+            pointer-events: none;\
+            opacity: 0;\
+            transition: opacity .15s ease-out;\
+            z-index: 100;\
+        \}\
+\
+        .preview img \{ width: 100%; display: block; \}\
+\
+        .footer \{\
+            padding: 300px 60px 100px;\
+            font-size: 14px;\
+            letter-spacing: 3px;\
+            opacity: .6;\
+        \}\
+\
+        @media(max-width:900px) \{\
+            .logo \{ font-size: 60px; \}\
+            .main \{ width: 100%; padding: 160px 30px; \}\
+            .preview \{ display: none; \}\
+            html, body \{ cursor: auto; \}\
+            #custom-cursor \{ display: none; \}\
+        \}\
+    </style>\
+</head>\
+<body>\
+\
+    <div id="custom-cursor"></div>\
+\
+    <div class="nav">\
+        <div class="logo">FUSION</div>\
+        <a href="#footer-contact" class="contact-link">CONTACT</a>\
+    </div>\
+\
+    <div class="main">\
+        <a href="https://www.youtube.com/watch?v=cB0-g6u-kO4" target="_blank" class="film-link">\
+            <div class="film" data-img="images/RaymondLeigh.png">\
+                Raymond Leigh <span class="year">2026</span>\
+            </div>\
+        </a>\
+\
+        <a href="https://vimeo.com/1122986082?fl=pl&fe=cm" target="_blank" class="film-link">\
+            <div class="film" data-img="images/Arlo.png">\
+                Alro <span class="year">2025</span>\
+            </div>\
+        </a>\
+\
+        <a href="https://www.youtube.com/watch?v=rN5POyiLMTM" target="_blank" class="film-link">\
+            <div class="film" data-img="images/Mutek.png">\
+                MUTEK <span class="year">2024</span>\
+            </div>\
+        </a>\
+    </div>\
+\
+    <div class="preview" id="preview">\
+        <img src="">\
+    </div>\
+\
+    <div class="footer" id="footer-contact">\
+        filmbyfusion@gmail.com\
+    </div>\
+\
+    <script>\
+        const cursor = document.getElementById('custom-cursor');\
+        const preview = document.getElementById('preview');\
+        const previewImg = preview.querySelector('img');\
+        const films = document.querySelectorAll('.film');\
+\
+        window.addEventListener('mousemove', (e) => \{\
+            cursor.style.left = e.clientX + 'px';\
+            cursor.style.top = e.clientY + 'px';\
+            preview.style.left = (e.clientX + 40) + 'px';\
+            preview.style.top = (e.clientY - (preview.offsetHeight / 2)) + 'px';\
+        \});\
+\
+        films.forEach(film => \{\
+            film.addEventListener('mouseenter', () => \{\
+                preview.style.opacity = 1;\
+                previewImg.src = film.dataset.img;\
+            \});\
+            film.addEventListener('mouseleave', () => \{\
+                preview.style.opacity = 0;\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>}
