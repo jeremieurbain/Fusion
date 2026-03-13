@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSION | Production Co.</title>
     <style>
-        /* ALL STYLES GO HERE */
         * {
             margin: 0;
             padding: 0;
@@ -15,26 +14,12 @@
 
         html {
             scroll-behavior: smooth;
-            cursor: none; 
         }
 
         body {
             background: black; 
             color: white;
             overflow-x: hidden;
-            cursor: none;
-        }
-
-        #custom-cursor {
-            position: fixed;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 18px solid white;
-            transform: rotate(-30deg);
-            pointer-events: none;
-            z-index: 9999;
         }
 
         .nav {
@@ -61,6 +46,7 @@
             letter-spacing: 3px;
             transition: opacity 0.3s;
             opacity: 0.8;
+            cursor: pointer;
         }
 
         .contact-link:hover { opacity: 1; }
@@ -73,11 +59,13 @@
         .film-link {
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
         }
 
+        /* Titles: Reduced from 64px to 48px */
         .film {
-            font-size: 64px; 
-            padding: 30px 0;
+            font-size: 48px; 
+            padding: 25px 0;
             transition: .4s ease;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -91,9 +79,10 @@
         }
 
         .year {
-            font-size: 16px;
+            font-size: 14px;
             margin-left: 15px;
             opacity: .4;
+            font-weight: normal;
         }
 
         .preview {
@@ -121,15 +110,12 @@
         @media(max-width:900px) {
             .logo { font-size: 40px; letter-spacing: 10px; }
             .main { width: 100%; padding: 200px 30px; }
-            .film { font-size: 32px; }
-            .preview, #custom-cursor { display: none; }
-            html, body { cursor: auto; }
+            .film { font-size: 28px; }
+            .preview { display: none; }
         }
     </style>
 </head>
 <body>
-
-    <div id="custom-cursor"></div>
 
     <div class="nav">
         <div class="logo">FUSION</div>
@@ -165,16 +151,11 @@
     </div>
 
     <script>
-        const cursor = document.getElementById('custom-cursor');
         const preview = document.getElementById('preview');
         const previewImg = preview.querySelector('img');
         const films = document.querySelectorAll('.film');
 
         window.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            // This ensures the preview is centered to the cursor
             preview.style.left = (e.clientX + 40) + 'px';
             preview.style.top = (e.clientY - (preview.offsetHeight / 2)) + 'px';
         });
