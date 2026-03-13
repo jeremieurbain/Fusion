@@ -110,3 +110,43 @@ body {
     html, body { cursor: auto; }
     #custom-cursor { display: none; }
 }
+body {
+    background: black; /* Dark background */
+    color: white;     /* White text */
+    cursor: none;
+    overflow-x: hidden;
+}
+
+/* 1. Bigger Gap between FUSION and Titles */
+.main {
+    padding: 350px 60px; /* Increased from 220px to 350px */
+    width: 50%;
+}
+
+/* 2. Titles: 2x Bigger + Glowing */
+.film {
+    font-size: 64px; /* Doubled from 32px */
+    padding: 30px 0;
+    transition: .4s ease;
+    text-transform: uppercase; /* Makes it feel more like NEON/A24 */
+    letter-spacing: 2px;
+}
+
+/* 3. The Glow Effect on Hover */
+.film:hover {
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 
+                 0 0 30px rgba(255, 255, 255, 0.4);
+    transform: translateX(10px); /* Slight shift for extra polish */
+}
+
+/* Update the Arrow Cursor to white so it shows up on black */
+#custom-cursor {
+    border-bottom: 18px solid white;
+}
+
+/* Update the preview container to handle the dark theme */
+.preview {
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for the image */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
